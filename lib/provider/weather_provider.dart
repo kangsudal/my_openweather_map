@@ -13,7 +13,8 @@ class WeatherProvider with ChangeNotifier {
 
   //wanted data
   double temp = 0;
-  double id = 800;
+  double id = 800;//Weather condition codes https://openweathermap.org/weather-conditions#Icon-list
+  String backgroundImg = 'images/Cloud.jpg';
   String description = '';
 
   Future<void> getLocation() async {
@@ -33,7 +34,8 @@ class WeatherProvider with ChangeNotifier {
     var url = Uri.https('api.openweathermap.org', '/data/2.5/weather', {
       'lat': latitude.toString(),
       'lon': longitude.toString(),
-      'appid': apiKey
+      'appid': apiKey,
+      'units': 'metric'
     }); // print(url);
     try {
       http.Response response = await http.get(url);
@@ -46,6 +48,28 @@ class WeatherProvider with ChangeNotifier {
         id = jsonData['weather'][0]['id'];
         description = jsonData['weather'][0]['description'];
         print('$temp,$id,$description');
+
+        if(id >=00 && id<300){
+          backgroundImg = 'images/Thunderstorm.jpg';
+        }else if(id >=300 && id <500){
+          backgroundImg = 'images/Drizzle.jpg';
+        }else if(id>=500 && id<600){
+          backgroundImg = 'images/Rain.jpg';
+        }else if(id>=600 && id<700){
+          backgroundImg = 'images/Atmosphere.jpg';
+        }else if(id==800){
+          backgroundImg = "images/Clear.jpg";
+        }else{
+          if(id ==801)
+            backgroundImg = "images/Cloud.jpg";
+          if(id == 802)
+            backgroundImg = 'images/Cloud_scattered.jpg';
+          if(id == 803)
+            backgroundImg = 'images/Clound_broken.jpg';
+          if(id == 804)
+            backgroundImg = 'images/Cloud_overcast.jpg';
+        }
+
       } else {
         print('응답:${response.statusCode}');
       }

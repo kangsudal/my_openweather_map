@@ -1,5 +1,6 @@
-
 import 'package:flutter/material.dart';
+import 'package:my_openweathermap_app/provider/weather_provider.dart';
+import 'package:provider/provider.dart';
 
 class Top extends StatelessWidget {
   const Top({
@@ -14,7 +15,7 @@ class Top extends StatelessWidget {
         children: [
           Positioned(
             child: Image.asset(
-              'images/Cloud.jpg',
+              context.watch<WeatherProvider>().backgroundImg,
               fit: BoxFit.cover,
             ),
             top: 0,
@@ -27,7 +28,7 @@ class Top extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '128°',
+                  '${context.watch<WeatherProvider>().temp}°',
                   style: TextStyle(
                     fontSize: 80,
                     color: Colors.white,
@@ -35,25 +36,26 @@ class Top extends StatelessWidget {
                   ),
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      '비없음',
+                      context.watch<WeatherProvider>().description,
                       style: TextStyle(
                         color: Colors.white,
                       ),
                     ),
-                    Text(
-                      '습도',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      '풍속',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
+                    // Text(
+                    //   '습도',
+                    //   style: TextStyle(
+                    //     color: Colors.white,
+                    //   ),
+                    // ),
+                    // Text(
+                    //   '풍속',
+                    //   style: TextStyle(
+                    //     color: Colors.white,
+                    //   ),
+                    // ),
                   ],
                 ),
               ],
