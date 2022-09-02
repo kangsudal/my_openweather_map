@@ -27,6 +27,7 @@ class WeatherProvider with ChangeNotifier {
     } catch (e) {
       print("위치 정보를 가져오지 못하였습니다.");
     }
+    notifyListeners();
   }
 
   Future<void> fetchWeatherData() async {
@@ -77,5 +78,6 @@ class WeatherProvider with ChangeNotifier {
       print('openweathermap에서 데이터를 가져오지 못하였습니다.');
       print(e);
     }
+    notifyListeners();
   }
 }
