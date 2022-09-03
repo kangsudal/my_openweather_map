@@ -6,7 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 
 class WeatherProvider with ChangeNotifier {
-  //ingredient
+/*  //ingredient
   final apiKey = dotenv.env['APIKEY']; //openweathermap key
   double longitude = 0; //device location data
   double latitude = 0;
@@ -80,4 +80,5 @@ class WeatherProvider with ChangeNotifier {
     }
     notifyListeners();
   }
+  */
 }
