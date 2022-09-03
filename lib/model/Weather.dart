@@ -1,6 +1,6 @@
 class Weather {
   double temp;
-  double id; //Weather condition codes https://openweathermap.org/weather-conditions#Icon-list
+  int id; //Weather condition codes https://openweathermap.org/weather-conditions#Icon-list
   String backgroundImg;
   String description;
 
@@ -13,7 +13,7 @@ class Weather {
 
   factory Weather.fromJson(Map<String, dynamic> json) {
     double temp = json['main']['temp'];
-    double id = json['weather'][0]["id"];
+    int id = json['weather'][0]["id"];
     String description = json['weather'][0]["description"];
     String backgroundImg='';
     if(id >=0 && id<300){
@@ -36,6 +36,7 @@ class Weather {
       if(id == 804)
         backgroundImg = 'images/Cloud_overcast.jpg';
     }
+    print("temp:$temp, id:$id, backgroundImg:$backgroundImg, description:$description");
     return Weather(
       temp: temp,
       id: id,

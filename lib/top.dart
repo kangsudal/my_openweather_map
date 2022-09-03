@@ -22,12 +22,14 @@ class Top extends StatelessWidget {
       //     .latitude; //print('longitude:$longitude, latitude: $latitude');
       return position;
     } catch (e) {
+      print('getLocation: $e');
       print("위치 정보를 가져오지 못하였습니다.");
       return null;
     }
   }
 
   Future<Weather?> fetchWeatherData() async {
+    LocationPermission permission = await Geolocator.requestPermission();
     Position? position = await getLocation();
     var url = Uri.https('api.openweathermap.org', '/data/2.5/weather', {
       'lat': position?.latitude.toString(),
@@ -35,7 +37,7 @@ class Top extends StatelessWidget {
       'appid': dotenv.env['APIKEY'],
       'units': 'metric'
     });
-    // print(url);
+    print(url);
 
     try {
       http.Response response = await http.get(url);
@@ -47,7 +49,7 @@ class Top extends StatelessWidget {
         return null;
       }
     } catch (e) {
-      print(e);
+      print('fetchWeatherData(): $e');
       // print("openweathermap에서 데이터를 가져오지 못하였습니다.");
     }
   }
