@@ -85,6 +85,18 @@ class Top extends StatelessWidget {
                               fontSize: 80,
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
+                              shadows: <Shadow>[
+                                Shadow(
+                                  offset: Offset(5.0, 5.0),
+                                  blurRadius: 3.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                                // Shadow(
+                                //   offset: Offset(10.0, 10.0),
+                                //   blurRadius: 8.0,
+                                //   color: Color.fromARGB(125, 0, 0, 255),
+                                // ),
+                              ],
                             ),
                           ),
                           Row(
