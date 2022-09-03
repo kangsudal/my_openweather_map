@@ -9,10 +9,16 @@ import 'package:http/http.dart' as http;
 
 import 'model/Weather.dart';
 
-class Top extends StatelessWidget {
+class Top extends StatefulWidget {
   const Top({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<Top> createState() => _TopState();
+}
+
+class _TopState extends State<Top> {
   Future<Position?> getLocation() async {
     try {
       Position position = await Geolocator.getCurrentPosition(
@@ -22,12 +28,14 @@ class Top extends StatelessWidget {
       //     .latitude; //print('longitude:$longitude, latitude: $latitude');
       return position;
     } catch (e) {
+      print('getLocation: $e');
       print("위치 정보를 가져오지 못하였습니다.");
       return null;
     }
   }
 
   Future<Weather?> fetchWeatherData() async {
+    LocationPermission permission = await Geolocator.requestPermission();
     Position? position = await getLocation();
     var url = Uri.https('api.openweathermap.org', '/data/2.5/weather', {
       'lat': position?.latitude.toString(),
@@ -35,7 +43,7 @@ class Top extends StatelessWidget {
       'appid': dotenv.env['APIKEY'],
       'units': 'metric'
     });
-    // print(url);
+    print(url);
 
     try {
       http.Response response = await http.get(url);
@@ -47,7 +55,7 @@ class Top extends StatelessWidget {
         return null;
       }
     } catch (e) {
-      print(e);
+      print('fetchWeatherData(): $e');
       // print("openweathermap에서 데이터를 가져오지 못하였습니다.");
     }
   }
@@ -83,6 +91,18 @@ class Top extends StatelessWidget {
                               fontSize: 80,
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
+                              shadows: <Shadow>[
+                                Shadow(
+                                  offset: Offset(5.0, 5.0),
+                                  blurRadius: 3.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                                // Shadow(
+                                //   offset: Offset(10.0, 10.0),
+                                //   blurRadius: 8.0,
+                                //   color: Color.fromARGB(125, 0, 0, 255),
+                                // ),
+                              ],
                             ),
                           ),
                           Row(
@@ -92,6 +112,14 @@ class Top extends StatelessWidget {
                                 snapshot.data!.description,
                                 style: TextStyle(
                                   color: Colors.white,
+                                  fontSize: 25,
+                                  shadows: <Shadow>[
+                                    Shadow(
+                                      offset: Offset(5.0, 5.0),
+                                      blurRadius: 3.0,
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                    ),
+                                  ],
                                 ),
                               ),
                               // Text(
@@ -106,6 +134,22 @@ class Top extends StatelessWidget {
                               //     color: Colors.white,
                               //   ),
                               // ),
+                              IconButton(
+                                onPressed: () {
+                                  setState(() {});
+                                },
+                                icon: Icon(
+                                  Icons.refresh,
+                                  color: Colors.white,
+                                  shadows: [
+                                    Shadow(
+                                      offset: Offset(5.0, 5.0),
+                                      blurRadius: 3.0,
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                         ],
