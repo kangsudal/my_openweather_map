@@ -9,10 +9,16 @@ import 'package:http/http.dart' as http;
 
 import 'model/Weather.dart';
 
-class Top extends StatelessWidget {
+class Top extends StatefulWidget {
   const Top({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<Top> createState() => _TopState();
+}
+
+class _TopState extends State<Top> {
   Future<Position?> getLocation() async {
     try {
       Position position = await Geolocator.getCurrentPosition(
@@ -106,6 +112,14 @@ class Top extends StatelessWidget {
                                 snapshot.data!.description,
                                 style: TextStyle(
                                   color: Colors.white,
+                                  fontSize: 25,
+                                  shadows: <Shadow>[
+                                    Shadow(
+                                      offset: Offset(5.0, 5.0),
+                                      blurRadius: 3.0,
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                    ),
+                                  ],
                                 ),
                               ),
                               // Text(
@@ -120,6 +134,22 @@ class Top extends StatelessWidget {
                               //     color: Colors.white,
                               //   ),
                               // ),
+                              IconButton(
+                                onPressed: () {
+                                  setState(() {});
+                                },
+                                icon: Icon(
+                                  Icons.refresh,
+                                  color: Colors.white,
+                                  shadows: [
+                                    Shadow(
+                                      offset: Offset(5.0, 5.0),
+                                      blurRadius: 3.0,
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                         ],

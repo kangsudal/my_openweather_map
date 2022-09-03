@@ -78,10 +78,10 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
         icon: Icon(Icons.menu),
         color: Colors.white,
       ),
-      title: Text(
-        '동동동',
-        style: TextStyle(color: Colors.white),
-      ),
+      // title: Text(
+      //   '동동동',
+      //   style: TextStyle(color: Colors.white),
+      // ),
       centerTitle: true,
       actions: [
         IconButton(
