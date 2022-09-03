@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    Provider.of<WeatherProvider>(context, listen: false).fetchWeatherData().then((value) => print('start'));
+    // Provider.of<WeatherProvider>(context, listen: false).fetchWeatherData().then((value) => print('start'));
   }
 
   @override
