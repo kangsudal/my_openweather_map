@@ -66,7 +66,7 @@ class WeatherProvider with ChangeNotifier {
           if(id == 802)
             backgroundImg = 'images/Cloud_scattered.jpg';
           if(id == 803)
-            backgroundImg = 'images/Clound_broken.jpg';
+            backgroundImg = 'images/Cloud_broken.jpg';
           if(id == 804)
             backgroundImg = 'images/Cloud_overcast.jpg';
         }
