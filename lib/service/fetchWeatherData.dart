@@ -64,7 +64,6 @@ Future<List<Forecast>?> fetchForecastData() async {
 Future<Position?> getLocation() async {
   //현재 위치 가져오기
   try {
-    LocationPermission permission = await Geolocator.requestPermission();
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.best);
     double longitude = position.longitude;

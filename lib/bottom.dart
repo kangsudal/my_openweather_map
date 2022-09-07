@@ -115,21 +115,23 @@ class CellWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        FittedBox(
-          child: Text(date),
-          fit: BoxFit.scaleDown,
-        ),
-        FittedBox(
-          child: icon,
-          fit: BoxFit.scaleDown,
-        ),
-        FittedBox(
-          child: Text('$celcious°'),
-          fit: BoxFit.scaleDown,
-        ),
-      ],
+    return Expanded(
+      child: Column(
+        children: [
+          FittedBox(
+            child: Text(date),
+            fit: BoxFit.scaleDown,
+          ),
+          FittedBox(
+            child: icon,
+            fit: BoxFit.scaleDown,
+          ),
+          FittedBox(
+            child: Text('$celcious°'),
+            fit: BoxFit.scaleDown,
+          ),
+        ],
+      ),
     );
   }
 }

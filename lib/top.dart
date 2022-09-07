@@ -132,8 +132,9 @@ class _TopState extends State<Top> {
                   child: Text("데이터를 가져오지 못하였습니다."),
                 );
               }
+            }else{
+              return Center(child: const CircularProgressIndicator());
             }
-            return Center(child: const CircularProgressIndicator());
           }),
     );
   }
