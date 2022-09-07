@@ -4,6 +4,8 @@ import 'package:my_openweathermap_app/provider/weather_provider.dart';
 import 'package:my_openweathermap_app/top.dart';
 import 'package:provider/provider.dart';
 
+import 'bottom.dart';
+
 void main() async {
   await dotenv.load(fileName: ".env");
   runApp(
@@ -58,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
           //Top
           Top(),
           //Bottom
-          // Bottom(),
+          Bottom(),
         ],
       ),
     );

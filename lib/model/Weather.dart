@@ -36,7 +36,7 @@ class Weather {
       if(id == 804)
         backgroundImg = 'images/Cloud_overcast.jpg';
     }
-    print("temp:$temp, id:$id, backgroundImg:$backgroundImg, description:$description");
+    // print("temp:$temp, id:$id, backgroundImg:$backgroundImg, description:$description");
     return Weather(
       temp: temp,
       id: id,
@@ -47,5 +47,29 @@ class Weather {
   @override
   String toString() {
     return 'Weather{temp: $temp, id: $id, backgroundImg: $backgroundImg, description: $description}';
+  }
+}
+
+class Forecast{
+  int dt;
+  String icon;
+  double temp;
+  Forecast({required this.dt, required this.icon, required this.temp});
+
+  factory Forecast.fromJson(Map<String,dynamic> json,int idx){
+    int dt;
+    String icon;
+    double temp;
+
+    dt = json['list'][idx]['dt'];
+    icon = "https://openweathermap.org/img/wn/${json['list'][idx]['weather'][0]['icon']}@2x.png";
+    temp = json['list'][idx]['main']['temp'];
+    // print(icon);
+    return Forecast(dt: dt, icon: icon, temp: temp);
+  }
+
+  @override
+  String toString() {
+    return 'Forecast{dt: $dt, icon: $icon, temp: $temp}';
   }
 }
