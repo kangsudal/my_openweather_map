@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(),
+      // appBar: MyAppBar(),
       extendBodyBehindAppBar: true,
       body: Column(
         children: [
